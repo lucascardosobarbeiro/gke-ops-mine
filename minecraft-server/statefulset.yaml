@@ -28,22 +28,14 @@ spec:
         - name: TYPE
           value: "PAPER"
         - name: MEMORY
-          value: "5G"
+          value: "4G"           # 4G para sobrar RAM pro Monitoramento
         - name: MOTD
-          value: "Servidor GitOps do Lucas"
+          value: "GitOps Monitorado"
         
-        # --- CONFIGURAÇÃO DA WHITELIST ---
-        - name: WHITELIST
-          value: "CardosoBrB"
-        - name: ENFORCE_WHITELIST
-          value: "TRUE"
-
-        # --- CORREÇÃO DO MONITORAMENTO (Modrinth) ---
-        # Em vez de link fixo que quebra, pedimos pelo nome do projeto
+        # Plugin Automático via Modrinth
         - name: MODRINTH_PROJECTS
           value: "minecraft-prometheus-exporter"
         
-        # Ativa o plugin na porta correta
         - name: PROMETHEUS_EXPORTER_ENABLE
           value: "true"
         - name: PROMETHEUS_EXPORTER_PORT
