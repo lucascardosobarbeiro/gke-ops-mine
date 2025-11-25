@@ -32,6 +32,10 @@ spec:
         volumeMounts:
         - name: data
           mountPath: /data   # Onde o mundo é salvo
+        - name: WHITELIST
+          value: "CardosoBrB" # Nicks exatos do Minecraft
+        - name: ENFORCE_WHITELIST
+          value: "TRUE"
       volumes:
       - name: data
         persistentVolumeClaim:
