@@ -28,7 +28,7 @@ spec:
         - name: TYPE
           value: "PAPER"
         - name: MEMORY
-          value: "5G"           # Ajustado para caber o Prometheus junto
+          value: "5G"
         - name: MOTD
           value: "Servidor GitOps do Lucas"
         
@@ -38,11 +38,10 @@ spec:
         - name: ENFORCE_WHITELIST
           value: "TRUE"
 
-        # --- CONFIGURAÇÃO DO MONITORAMENTO ---
-        # Baixa o plugin Exporter automaticamente
-        - name: PLUGINS
-          value: |
-            https://github.com/sladkoff/minecraft-prometheus-exporter/releases/download/v2.6.1/minecraft-prometheus-exporter-2.6.1.jar
+        # --- CORREÇÃO DO MONITORAMENTO (Modrinth) ---
+        # Em vez de link fixo que quebra, pedimos pelo nome do projeto
+        - name: MODRINTH_PROJECTS
+          value: "minecraft-prometheus-exporter"
         
         # Ativa o plugin na porta correta
         - name: PROMETHEUS_EXPORTER_ENABLE
