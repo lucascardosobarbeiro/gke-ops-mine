@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: minecraft
+  namespace: default
+spec:
+  serviceName: "minecraft"
+  replicas: 1
+  selector:
+    matchLabels:
+      app: minecraft
+  template:
+    metadata:
+      labels:
+        app: minecraft
+    spec:
+      containers:
+      - name: minecraft
+        image: itzg/minecraft-server:java17 # Imagem oficial Java 17
+        ports:
+        - containerPort: 25565
+          name: minecraft
+        env:
+        - name: EULA
+          value: "TRUE"      # Aceita o contrato da Mojang
+        - name: TYPE
+          value: "PAPER"     # Usa PaperMC (Mais leve e aceita plugins)
+        - name: MEMORY
+          value: "6G"        # Dedica 6GB para o Java (deixa 2GB pro sistema)
+        - name: MOTD
+          value: "Servidor GitOps do Lucas"
+        volumeMounts:
+        - name: data
+          mountPath: /data   # Onde o mundo é salvo
+      volumes:
+      - name: data
+        persistentVolumeClaim:
+          claimName: minecraft-data
