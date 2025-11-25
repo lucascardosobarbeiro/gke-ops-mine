@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: minecraft
-        image: itzg/minecraft-server:java17 # Imagem oficial Java 17
+        image: itzg/minecraft-server:java21 # Imagem oficial Java 21
         ports:
         - containerPort: 25565
           name: minecraft
@@ -26,7 +26,7 @@ spec:
         - name: TYPE
           value: "PAPER"     # Usa PaperMC (Mais leve e aceita plugins)
         - name: MEMORY
-          value: "6G"        # Dedica 6GB para o Java (deixa 2GB pro sistema)
+          value: "4G"        # Dedica 6GB para o Java (deixa 2GB pro sistema)
         - name: MOTD
           value: "Servidor GitOps do Lucas"
         volumeMounts:
