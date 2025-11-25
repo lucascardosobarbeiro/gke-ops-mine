@@ -3,6 +3,8 @@ kind: Service
 metadata:
   name: minecraft-lb
   namespace: default
+  labels:
+    app: minecraft # Importante para o ServiceMonitor achar
 spec:
   type: LoadBalancer
   selector:
@@ -11,3 +13,8 @@ spec:
     - port: 25565
       targetPort: 25565
       protocol: TCP
+      name: game
+    - port: 9225      # <--- Adicione isso
+      targetPort: 9225
+      protocol: TCP
+      name: metrics   # <--- Nome importante

@@ -1,0 +1,17 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: minecraft-monitor
+  namespace: monitoring  # Ele deve viver onde o Prometheus vive
+  labels:
+    release: monitoring-stack # Isso diz ao Prometheus "Ei, esse monitor é seu"
+spec:
+  selector:
+    matchLabels:
+      app: minecraft # Isso diz "Monitore quem tiver essa label"
+  namespaceSelector:
+    matchNames:
+      - default # O Minecraft está aqui
+  endpoints:
+  - port: metrics # Nome da porta que definimos no StatefulSet (se não definiu nome no Service, use targetPort: 9225)
+    interval: 15s

@@ -39,7 +39,7 @@ resource "google_container_node_pool" "primary_nodes" {
   node_count = 1 # Para Minecraft, 1 nó parrudo é melhor que vários fracos
 
   node_config {
-    preemptible  = true            # Spot VM (Mais barato, reseta a cada 24h)
+    preemptible  = false           # Spot VM (Mais barato, reseta a cada 24h)
     machine_type = "e2-standard-2" # 8GB RAM / 2 vCPUs
     disk_size_gb = 50              # Espaço em disco do sistema
 
