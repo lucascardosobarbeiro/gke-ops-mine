@@ -20,7 +20,7 @@ spec:
         ports:
         - containerPort: 25565
           name: minecraft
-        - containerPort: 9225   # Porta padrão do plugin
+        - containerPort: 9940   # <--- MUDE AQUI PARA 9940
           name: metrics
         env:
         - name: EULA
@@ -32,14 +32,9 @@ spec:
         - name: MOTD
           value: "Servidor GitOps Monitorado"
         
-        # --- A CORREÇÃO DEFINITIVA ---
-        # Baixa a versão EXATA v3.0.0 que funciona no 1.21
-        # (O Spiget às vezes manda zip, o GitHub manda o jar direto)
+        # Link direto para a versão v3.0.0 (Isso está perfeito)
         - name: PLUGINS
           value: "https://github.com/sladkoff/minecraft-prometheus-exporter/releases/download/v3.0.0/minecraft-prometheus-exporter-3.0.0.jar"
-        
-        # REMOVIDO: PROMETHEUS_EXPORTER_ENABLE (Para não causar conflito)
-        # REMOVIDO: PROMETHEUS_EXPORTER_PORT (O plugin já usa 9225 por padrão)
         
         - name: WHITELIST
           value: "CardosoBrB"

@@ -3,6 +3,8 @@ kind: Service
 metadata:
   name: minecraft-lb
   namespace: default
+  labels:
+    app: minecraft
 spec:
   type: LoadBalancer
   selector:
@@ -12,7 +14,7 @@ spec:
       targetPort: 25565
       protocol: TCP
       name: game
-    - port: 9225      # <--- Adicionar de volta
-      targetPort: 9225
+    - port: 9940      # <--- MUDE AQUI PARA 9940
+      targetPort: 9940
       protocol: TCP
       name: metrics
