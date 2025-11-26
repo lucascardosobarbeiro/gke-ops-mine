@@ -20,29 +20,30 @@ spec:
         ports:
         - containerPort: 25565
           name: minecraft
+        - containerPort: 9225   # <--- ESSENCIAL: Abrir a porta pro Prometheus
+          name: metrics
         env:
         - name: EULA
           value: "TRUE"
         - name: TYPE
           value: "PAPER"
-        
-        # Já que você pagou pela máquina de 16GB, vamos dar 10GB pro jogo!
         - name: MEMORY
           value: "10G"
-        
         - name: MOTD
           value: "Servidor GitOps Profissional"
         
-        # --- MONITORAMENTO (Modrinth) ---
-        - name: MODRINTH_PROJECTS
-          value: "minecraft-prometheus-exporter"
+        # --- TROCA IMPORTANTE ---
+        # Removemos o Modrinth (que deu erro 404)
+        # Usamos o link direto da API do Spigot (ID 39752)
+        - name: PLUGINS
+          value: "https://api.spiget.org/v2/resources/39752/download"
         
+        # Configuração do Plugin
         - name: PROMETHEUS_EXPORTER_ENABLE
           value: "true"
         - name: PROMETHEUS_EXPORTER_PORT
           value: "9225"
         
-        # Mantendo sua Whitelist (Isso é importante)
         - name: WHITELIST
           value: "CardosoBrB"
         - name: ENFORCE_WHITELIST
