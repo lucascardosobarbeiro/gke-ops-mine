@@ -33,6 +33,15 @@ spec:
         - name: MOTD
           value: "Servidor GitOps Profissional"
         
+        # --- MONITORAMENTO (Modrinth) ---
+        - name: MODRINTH_PROJECTS
+          value: "minecraft-prometheus-exporter"
+        
+        - name: PROMETHEUS_EXPORTER_ENABLE
+          value: "true"
+        - name: PROMETHEUS_EXPORTER_PORT
+          value: "9225"
+        
         # Mantendo sua Whitelist (Isso é importante)
         - name: WHITELIST
           value: "CardosoBrB"
