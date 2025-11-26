@@ -6,9 +6,9 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://github.com/lucascardosobarbeiro/gke-ops-mine.git
+    repoURL: https://github.com/lucascardosobarbeiro/git-ops-exe.git
     targetRevision: main
-    path: minecraft-server # <--- Aponta para a pasta nova
+    path: minecraft-server # <--- IMPORTANTE: Aponta para a pasta interna
   destination:
     server: https://kubernetes.default.svc
     namespace: default
@@ -16,3 +16,5 @@ spec:
     automated:
       prune: true
       selfHeal: true
+    syncOptions:
+      - CreateNamespace=true

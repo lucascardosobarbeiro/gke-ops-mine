@@ -20,26 +20,24 @@ spec:
         ports:
         - containerPort: 25565
           name: minecraft
-        - containerPort: 9225   # Porta de métricas
-          name: metrics
         env:
         - name: EULA
           value: "TRUE"
         - name: TYPE
           value: "PAPER"
+        
+        # Já que você pagou pela máquina de 16GB, vamos dar 10GB pro jogo!
         - name: MEMORY
-          value: "4G"           # 4G para sobrar RAM pro Monitoramento
+          value: "10G"
+        
         - name: MOTD
-          value: "GitOps Monitorado"
+          value: "Servidor GitOps Profissional"
         
-        # Plugin Automático via Modrinth
-        - name: MODRINTH_PROJECTS
-          value: "minecraft-prometheus-exporter"
-        
-        - name: PROMETHEUS_EXPORTER_ENABLE
-          value: "true"
-        - name: PROMETHEUS_EXPORTER_PORT
-          value: "9225"
+        # Mantendo sua Whitelist (Isso é importante)
+        - name: WHITELIST
+          value: "CardosoBrB"
+        - name: ENFORCE_WHITELIST
+          value: "TRUE"
 
         volumeMounts:
         - name: data

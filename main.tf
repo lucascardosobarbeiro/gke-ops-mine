@@ -40,7 +40,7 @@ resource "google_container_node_pool" "primary_nodes" {
 
   node_config {
     preemptible  = false           # Spot VM (Mais barato, reseta a cada 24h)
-    machine_type = "e2-standard-2" # 8GB RAM / 2 vCPUs
+    machine_type = "e2-standard-4" # 8GB RAM / 2 vCPUs
     disk_size_gb = 50              # Espaço em disco do sistema
 
     oauth_scopes = [
