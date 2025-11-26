@@ -20,7 +20,7 @@ spec:
         ports:
         - containerPort: 25565
           name: minecraft
-        - containerPort: 9225   # <--- ESSENCIAL: Abrir a porta pro Prometheus
+        - containerPort: 9225   # Porta padrão do plugin
           name: metrics
         env:
         - name: EULA
@@ -30,19 +30,16 @@ spec:
         - name: MEMORY
           value: "10G"
         - name: MOTD
-          value: "Servidor GitOps Profissional"
+          value: "Servidor GitOps Monitorado"
         
-        # --- TROCA IMPORTANTE ---
-        # Removemos o Modrinth (que deu erro 404)
-        # Usamos o link direto da API do Spigot (ID 39752)
+        # --- A CORREÇÃO DEFINITIVA ---
+        # Baixa a versão EXATA v3.0.0 que funciona no 1.21
+        # (O Spiget às vezes manda zip, o GitHub manda o jar direto)
         - name: PLUGINS
-          value: "https://api.spiget.org/v2/resources/39752/download"
+          value: "https://github.com/sladkoff/minecraft-prometheus-exporter/releases/download/v3.0.0/minecraft-prometheus-exporter-3.0.0.jar"
         
-        # Configuração do Plugin
-        - name: PROMETHEUS_EXPORTER_ENABLE
-          value: "true"
-        - name: PROMETHEUS_EXPORTER_PORT
-          value: "9225"
+        # REMOVIDO: PROMETHEUS_EXPORTER_ENABLE (Para não causar conflito)
+        # REMOVIDO: PROMETHEUS_EXPORTER_PORT (O plugin já usa 9225 por padrão)
         
         - name: WHITELIST
           value: "CardosoBrB"
